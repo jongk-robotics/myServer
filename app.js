@@ -33,6 +33,6 @@ var port = process.env.PORT || 8080;
 var router = require('./routes')(app, Contact);
 
 // [RUN SERVER]
-var server = app.listen(port, function(){
+var server = app.listen(80, function(){
  console.log("Express server has started on port " + port)
 });

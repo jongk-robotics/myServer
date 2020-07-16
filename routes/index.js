@@ -91,5 +91,18 @@ module.exports = function(app, Contact)
             res.status(204).end();
         })
     });
+
+    app.delete('/api/contacts', function(req, res){
+        Contact.remove({ }, function(err, output){
+            if(err) return res.status(500).json({ error: "database failure" });
+
+            /* ( SINCE DELETE OPERATION IS IDEMPOTENT, NO NEED TO SPECIFY )
+            if(!output.result.n) return res.status(404).json({ error: "contact not found" });
+            res.json({ message: "contact deleted" });
+            */
+
+            res.status(204).end();
+        })
+    });
      
 }
